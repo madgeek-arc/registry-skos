@@ -1,4 +1,4 @@
-package org.madgik.skos.configuration;
+package eu.openminted.registry.skos.configuration;
 
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 

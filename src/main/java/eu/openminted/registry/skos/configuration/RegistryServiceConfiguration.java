@@ -1,6 +1,7 @@
-package org.madgik.skos.configuration;
+package eu.openminted.registry.skos.configuration;
 
-import org.madgik.skos.domain.Ontology;
+import eu.openminted.registry.skos.domain.Concept;
+import eu.openminted.registry.skos.domain.Vocabulary;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,8 +17,7 @@ import javax.xml.bind.JAXBException;
 @Configuration
 @EnableWebMvc
 @ComponentScan(value = {
-        "eu.openminted.registry.core",
-        "org.madgik.skos.services"
+        "eu.openminted.registry"
 })
 @PropertySource(value = { "classpath:application.properties", "classpath:registry.properties"} )
 public class RegistryServiceConfiguration extends WebMvcConfigurerAdapter {
@@ -30,7 +30,7 @@ public class RegistryServiceConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     JAXBContext eicJAXBContext() throws JAXBException {
-        return JAXBContext.newInstance(Ontology.class);
+        return JAXBContext.newInstance(Vocabulary.class, Concept.class);
 
     }
 

@@ -1,4 +1,4 @@
-package org.madgik.skos.services;
+package eu.openminted.registry.skos.services;
 
 import eu.openminted.registry.core.domain.Resource;
 import eu.openminted.registry.core.service.ResourceCRUDService;

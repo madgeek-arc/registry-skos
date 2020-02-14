@@ -1,14 +1,15 @@
-package org.madgik.skos.domain;
+package eu.openminted.registry.skos.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Objects;
 
 @XmlType
-@XmlRootElement(name = "https://skos.org")
-public class Ontology implements Identifiable {
+@XmlRootElement
+public class Vocabulary implements Identifiable {
 
 
     // Basic Service Information
@@ -24,10 +25,13 @@ public class Ontology implements Identifiable {
     @ApiModelProperty(position = 2, example = "String (required)", required = true)
     private String name;
 
-    public Ontology() {
+    @ApiModelProperty(position = 3, example = "String (required)", required = true)
+    private String URI;
+
+    public Vocabulary() {
     }
 
-    public Ontology(String id, String name) {
+    public Vocabulary(String id, String name) {
         this.id = id;
         this.name = name;
     }
@@ -49,5 +53,29 @@ public class Ontology implements Identifiable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @XmlElement
+    public String getURI() {
+        return URI;
+    }
+
+    public void setURI(String URI) {
+        this.URI = URI;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vocabulary that = (Vocabulary) o;
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(URI, that.URI);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, URI);
     }
 }

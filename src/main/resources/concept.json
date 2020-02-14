@@ -1,0 +1,25 @@
+{
+  "indexFields": [
+    {
+      "name": "vocabulary",
+      "path": "//*[local-name()='vocabulary']/text()",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "narrower",
+      "path": "//*[local-name()='narrower']/text()",
+      "type": "java.lang.String"
+    },
+    {
+      "name": "broader",
+      "path": "//*[local-name()='broader']/text()",
+      "type": "java.lang.String"
+    }
+
+  ],
+  "indexMapperClass": "eu.openminted.registry.core.index.DefaultIndexMapper",
+  "name": "concept",
+  "aliasGroup": "resourceTypes",
+  "payloadType": "xml",
+  "schema": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" version=\"1.0\">\n    \n  <xs:element name=\"concept\" type=\"concept\"/>\n    \n  <xs:element name=\"vocabulary\" type=\"vocabulary\"/>\n    \n  <xs:complexType name=\"concept\">\n        \n    <xs:sequence>\n            \n      <xs:element minOccurs=\"0\" name=\"broader\" type=\"xs:string\"/>\n            \n      <xs:element minOccurs=\"0\" name=\"id\" type=\"xs:string\">\n        <xs:annotation>\n          <xs:documentation>\n            <![CDATA[Global unique and persistent identifier of the ontology.]]>\n          </xs:documentation>\n        </xs:annotation>\n      </xs:element>\n            \n      <xs:element name=\"name\" type=\"xs:string\">\n        <xs:annotation>\n          <xs:documentation>\n            <![CDATA[Brief and descriptive name of ontology.]]>\n          </xs:documentation>\n        </xs:annotation>\n      </xs:element>\n            \n      <xs:element minOccurs=\"0\" name=\"narrower\" type=\"xs:string\"/>\n            \n      <xs:element minOccurs=\"0\" name=\"URI\" type=\"xs:string\"/>\n            \n      <xs:element minOccurs=\"0\" name=\"vocabulary\" type=\"xs:string\"/>\n          \n    </xs:sequence>\n      \n  </xs:complexType>\n    \n  <xs:complexType name=\"vocabulary\">\n        \n    <xs:sequence>\n            \n      <xs:element minOccurs=\"0\" name=\"id\" type=\"xs:string\">\n        <xs:annotation>\n          <xs:documentation>\n            <![CDATA[Global unique and persistent identifier of the ontology.]]>\n          </xs:documentation>\n        </xs:annotation>\n      </xs:element>\n            \n      <xs:element minOccurs=\"0\" name=\"name\" type=\"xs:string\">\n        <xs:annotation>\n          <xs:documentation>\n            <![CDATA[Brief and descriptive name of ontology.]]>\n          </xs:documentation>\n        </xs:annotation>\n      </xs:element>\n            \n      <xs:element minOccurs=\"0\" name=\"URI\" type=\"xs:string\"/>\n          \n    </xs:sequence>\n      \n  </xs:complexType>\n  \n</xs:schema>\n"
+}

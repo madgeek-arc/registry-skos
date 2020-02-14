@@ -1,4 +1,4 @@
-package org.madgik.skos.services;
+package eu.openminted.registry.skos.services;
 
 import eu.openminted.registry.core.domain.Browsing;
 import eu.openminted.registry.core.domain.FacetFilter;
@@ -6,10 +6,10 @@ import eu.openminted.registry.core.domain.Resource;
 import eu.openminted.registry.core.service.AbstractGenericService;
 import eu.openminted.registry.core.service.ParserService;
 import eu.openminted.registry.core.service.SearchService;
+import eu.openminted.registry.skos.domain.Identifiable;
+import eu.openminted.registry.skos.exceptions.ResourceException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.madgik.skos.domain.Identifiable;
-import org.madgik.skos.exceptions.ResourceException;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;

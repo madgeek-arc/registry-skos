@@ -1,4 +1,4 @@
-package org.madgik.skos.exceptions;
+package eu.openminted.registry.skos.exceptions;
 
 import org.springframework.http.HttpStatus;
 

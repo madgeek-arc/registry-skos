@@ -17,6 +17,16 @@ services:
       - POSTGRES_DB=registry
     restart: unless-stopped
 
+  jms:
+    container_name: jms
+    image: rmohr/activemq:5.14.0-alpine
+    ports:
+      - "61616:61616"
+      - "8161:8161"
+    networks:
+      - arcnet
+    restart: unless-stopped
+
   elastic:
     container_name: elastic
     image: docker.elastic.co/elasticsearch/elasticsearch:7.4.2

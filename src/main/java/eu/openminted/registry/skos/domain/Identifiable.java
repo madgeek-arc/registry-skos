@@ -1,4 +1,4 @@
-package org.madgik.skos.domain;
+package eu.openminted.registry.skos.domain;
 
 //BeanUtils.getProperty(resourceToAdd,"getId") to get id, if I ever drop Identifiable due to w/e error
 public interface Identifiable {

@@ -1,14 +1,15 @@
-package org.madgik.skos.domain;
+package eu.openminted.registry.skos.domain;
 
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
+import java.util.Objects;
 
 @XmlType
 @XmlRootElement
-public class Term implements Identifiable {
+public class Concept implements Identifiable {
 
 
     // Basic Service Information
@@ -24,48 +25,55 @@ public class Term implements Identifiable {
     @ApiModelProperty(position = 2, example = "String (required)", required = true)
     private String name;
 
-    @ApiModelProperty(position = 3)
-    private Ontology ontology;
+    @ApiModelProperty(position = 3, example = "String (required)", required = true)
+    private String URI;
 
-    @ApiModelProperty(position = 3)
-    private Term broader;
+    @ApiModelProperty(position = 4)
+    private String vocabulary;
 
-    @ApiModelProperty(position = 3)
-    private Term narrower;
+    @ApiModelProperty(position = 5)
+    private String broader;
 
-    public Term(String id, String name, Ontology ontology, Term broader, Term narrower) {
+    @ApiModelProperty(position = 6)
+    private String narrower;
+
+    public Concept(String id, String name, String URI, String vocabulary, String broader, String narrower) {
         this.id = id;
         this.name = name;
-        this.ontology = ontology;
+        this.URI = URI;
+        this.vocabulary = vocabulary;
         this.broader = broader;
         this.narrower = narrower;
     }
 
-    public Term() {
+    public Concept() {
     }
+
     @XmlElement
-    public Term getBroader() {
+    public String getBroader() {
         return broader;
     }
 
-    public void setBroader(Term broader) {
+    public void setBroader(String broader) {
         this.broader = broader;
     }
+
     @XmlElement
-    public Term getNarrower() {
+    public String getNarrower() {
         return narrower;
     }
 
-    public void setNarrower(Term narrower) {
+    public void setNarrower(String narrower) {
         this.narrower = narrower;
     }
+
     @XmlElement
-    public Ontology getOntology() {
-        return ontology;
+    public String getVocabulary() {
+        return vocabulary;
     }
 
-    public void setOntology(Ontology ontology) {
-        this.ontology = ontology;
+    public void setVocabulary(String vocabulary) {
+        this.vocabulary = vocabulary;
     }
 
 
@@ -87,4 +95,14 @@ public class Term implements Identifiable {
     public void setName(String name) {
         this.name = name;
     }
+
+    @XmlElement
+    public String getURI() {
+        return URI;
+    }
+
+    public void setURI(String URI) {
+        this.URI = URI;
+    }
+
 }

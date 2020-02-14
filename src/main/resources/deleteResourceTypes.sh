@@ -4,7 +4,7 @@
 #	curl -X DELETE -k  https://$1/arc-expenses-service/resourceType/$i
 #done
 
-for i in   ontology term; do
+for i in   concept vocabulary; do
 	psql -h $1 -Uvrasidas registry <<endOfMessage
 
 delete from stringindexedfield_values where stringindexedfield_id in (select id from stringindexedfield where resource_id in (select id from resource where fk_name='$i'));
