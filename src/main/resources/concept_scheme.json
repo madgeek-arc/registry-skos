@@ -1,0 +1,29 @@
+{
+  "indexFields": [
+    {
+      "multivalued": false,
+      "name": "uri",
+      "path": "//*[local-name()='uri']/text()",
+      "type": "java.lang.String",
+      "primaryKey": true
+    },
+    {
+      "multivalued": false,
+      "name": "title",
+      "path": "//*[local-name()='title']/text()",
+      "type": "java.lang.String"
+    },
+    {
+      "multivalued": true,
+      "name": "concepts",
+      "path": "//*[local-name()='hasTopConcept']/text()",
+      "type": "java.lang.String"
+    }
+
+  ],
+  "indexMapperClass": "eu.openminted.registry.core.index.DefaultIndexMapper",
+  "name": "concept_scheme",
+  "aliasGroup": "resourceTypes",
+  "payloadType": "xml",
+  "schema": "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>\n<xs:schema xmlns:xs=\"http://www.w3.org/2001/XMLSchema\" version=\"1.0\">\n\n  <xs:element name=\"concept\" type=\"concept\"/>\n\n  <xs:element name=\"conceptScheme\" type=\"conceptScheme\"/>\n\n  <xs:element name=\"vocabulary\" type=\"vocabulary\"/>\n\n  <xs:complexType name=\"concept\">\n    <xs:sequence>\n      <xs:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"altLabels\" type=\"xs:string\"/>\n      <xs:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"broader\" type=\"xs:string\"/>\n      <xs:element minOccurs=\"0\" name=\"id\" type=\"xs:string\"/>\n      <xs:element minOccurs=\"0\" name=\"name\" type=\"xs:string\"/>\n      <xs:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"narrower\" type=\"xs:string\"/>\n      <xs:element name=\"prefLabels\">\n        <xs:complexType>\n          <xs:sequence>\n            <xs:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"entry\">\n              <xs:complexType>\n                <xs:sequence>\n                  <xs:element minOccurs=\"0\" name=\"key\" type=\"languagesEnum\"/>\n                  <xs:element minOccurs=\"0\" name=\"value\" type=\"xs:string\"/>\n                </xs:sequence>\n              </xs:complexType>\n            </xs:element>\n          </xs:sequence>\n        </xs:complexType>\n      </xs:element>\n      <xs:element minOccurs=\"0\" name=\"topConceptOf\" type=\"xs:string\"/>\n      <xs:element name=\"uri\" type=\"xs:string\"/>\n    </xs:sequence>\n  </xs:complexType>\n\n  <xs:complexType name=\"conceptScheme\">\n    <xs:sequence>\n      <xs:element minOccurs=\"0\" name=\"description\" type=\"xs:string\"/>\n      <xs:element maxOccurs=\"unbounded\" minOccurs=\"0\" name=\"hasTopConcept\" type=\"xs:string\"/>\n      <xs:element minOccurs=\"0\" name=\"id\" type=\"xs:string\"/>\n      <xs:element name=\"title\" type=\"xs:string\"/>\n      <xs:element name=\"uri\" type=\"xs:string\"/>\n    </xs:sequence>\n  </xs:complexType>\n\n  <xs:complexType name=\"vocabulary\">\n    <xs:sequence>\n      <xs:element minOccurs=\"0\" name=\"id\" type=\"xs:string\">\n        <xs:annotation>\n          <xs:documentation><![CDATA[Global unique and persistent identifier of the ontology.]]></xs:documentation>\n        </xs:annotation>\n      </xs:element>\n      <xs:element minOccurs=\"0\" name=\"name\" type=\"xs:string\">\n        <xs:annotation>\n          <xs:documentation><![CDATA[Brief and descriptive name of ontology.]]></xs:documentation>\n        </xs:annotation>\n      </xs:element>\n      <xs:element minOccurs=\"0\" name=\"URI\" type=\"xs:string\"/>\n    </xs:sequence>\n  </xs:complexType>\n\n  <xs:simpleType name=\"languagesEnum\">\n    <xs:restriction base=\"xs:string\">\n      <xs:enumeration value=\"ENGLISH\"/>\n      <xs:enumeration value=\"FRENCH\"/>\n      <xs:enumeration value=\"GERMAN\"/>\n      <xs:enumeration value=\"GREEK\"/>\n    </xs:restriction>\n  </xs:simpleType>\n</xs:schema>\n"
+}

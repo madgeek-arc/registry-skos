@@ -1,66 +1,70 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0">
-    
+
   <xs:element name="concept" type="concept"/>
-    
+
+  <xs:element name="conceptScheme" type="conceptScheme"/>
+
   <xs:element name="vocabulary" type="vocabulary"/>
-    
+
   <xs:complexType name="concept">
-        
     <xs:sequence>
-            
-      <xs:element minOccurs="0" name="broader" type="xs:string"/>
-            
-      <xs:element minOccurs="0" name="id" type="xs:string">
-        <xs:annotation>
-          <xs:documentation>
-            <![CDATA[Global unique and persistent identifier of the ontology.]]>
-          </xs:documentation>
-        </xs:annotation>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="altLabels" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="broader" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="narrower" type="xs:string"/>
+      <xs:element name="prefLabels">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element maxOccurs="unbounded" minOccurs="0" name="entry">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element minOccurs="0" name="key" type="languagesEnum"/>
+                  <xs:element minOccurs="0" name="value" type="xs:string"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:complexType>
       </xs:element>
-            
-      <xs:element name="name" type="xs:string">
-        <xs:annotation>
-          <xs:documentation>
-            <![CDATA[Brief and descriptive name of ontology.]]>
-          </xs:documentation>
-        </xs:annotation>
-      </xs:element>
-            
-      <xs:element minOccurs="0" name="narrower" type="xs:string"/>
-            
-      <xs:element minOccurs="0" name="URI" type="xs:string"/>
-            
-      <xs:element minOccurs="0" name="vocabulary" type="xs:string"/>
-          
+      <xs:element minOccurs="0" name="topConceptOf" type="xs:string"/>
+      <xs:element name="uri" type="xs:string"/>
     </xs:sequence>
-      
   </xs:complexType>
-    
-  <xs:complexType name="vocabulary">
-        
+
+  <xs:complexType name="conceptScheme">
     <xs:sequence>
-            
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="hasTopConcept" type="xs:string"/>
+      <xs:element minOccurs="0" name="id" type="xs:string"/>
+      <xs:element name="title" type="xs:string"/>
+      <xs:element name="uri" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="vocabulary">
+    <xs:sequence>
       <xs:element minOccurs="0" name="id" type="xs:string">
         <xs:annotation>
-          <xs:documentation>
-            <![CDATA[Global unique and persistent identifier of the ontology.]]>
-          </xs:documentation>
+          <xs:documentation><![CDATA[Global unique and persistent identifier of the ontology.]]></xs:documentation>
         </xs:annotation>
       </xs:element>
-            
       <xs:element minOccurs="0" name="name" type="xs:string">
         <xs:annotation>
-          <xs:documentation>
-            <![CDATA[Brief and descriptive name of ontology.]]>
-          </xs:documentation>
+          <xs:documentation><![CDATA[Brief and descriptive name of ontology.]]></xs:documentation>
         </xs:annotation>
       </xs:element>
-            
       <xs:element minOccurs="0" name="URI" type="xs:string"/>
-          
     </xs:sequence>
-      
   </xs:complexType>
-  
+
+  <xs:simpleType name="languagesEnum">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="ENGLISH"/>
+      <xs:enumeration value="FRENCH"/>
+      <xs:enumeration value="GERMAN"/>
+      <xs:enumeration value="GREEK"/>
+    </xs:restriction>
+  </xs:simpleType>
 </xs:schema>

@@ -1,6 +1,7 @@
 package eu.openminted.registry.skos.configuration;
 
 import eu.openminted.registry.skos.domain.Concept;
+import eu.openminted.registry.skos.domain.ConceptScheme;
 import eu.openminted.registry.skos.domain.Vocabulary;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -30,7 +31,7 @@ public class RegistryServiceConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     JAXBContext eicJAXBContext() throws JAXBException {
-        return JAXBContext.newInstance(Vocabulary.class, Concept.class);
+        return JAXBContext.newInstance(Vocabulary.class, Concept.class, ConceptScheme.class);
 
     }
 
