@@ -24,7 +24,7 @@ public class SwaggerConfig {
 
 
     @Value("${openminted.debug:#{false}}")
-    public Boolean isLocalhost;
+    public boolean isLocalhost;
 
     @Value("${registry.host}")
     public String host;
@@ -52,7 +52,8 @@ public class SwaggerConfig {
                 .pathProvider(pathProvider())
                 .host(isLocalhost ? null : hostURL.getHost() + hostURL.getPath())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("eu.openminted.registry.core"))
+                .apis(isLocalhost ? RequestHandlerSelectors.basePackage("eu.openminted.registry") :
+                        RequestHandlerSelectors.basePackage("eu.openminted.registry.skos"))
                 .paths(PathSelectors.any())
                 .build();
     }
