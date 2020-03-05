@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/concepts")
+@RequestMapping("concepts")
 public class ConceptController extends ResourceController<Concept, Authentication> {
 
-    private ConceptService conceptService;
+    private static final Logger logger = LogManager.getLogger(ConceptController.class);
+    private final ConceptService conceptService;
 
     @Autowired
     public ConceptController(ConceptService conceptService) {
@@ -21,5 +22,4 @@ public class ConceptController extends ResourceController<Concept, Authenticatio
         this.conceptService = conceptService;
     }
 
-    private final Logger logger = LogManager.getLogger(ConceptController.class);
 }
