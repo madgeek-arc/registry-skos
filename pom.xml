@@ -10,7 +10,7 @@
     <packaging>war</packaging>
     <properties>
         <registry.core>2.1.6-SNAPSHOT</registry.core>
-        <spring.version>4.3.3.RELEASE</spring.version>
+        <spring.version>6.0.0</spring.version>
     </properties>
 
     <dependencies>
